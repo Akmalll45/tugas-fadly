@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Kalkulator Nilai Akhir</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Prediksi Nilai Akhir Mahasiswa</h1>
+
+    {% if nilai_akhir is not none %}
+      <h2>Hasil Perhitungan</h2>
+      <p><strong>Nilai Akhir:</strong> {{ nilai_akhir }}</p>
+      <p><strong>Nilai Huruf:</strong> {{ nilai_huruf }}</p>
+      <a href="/">Kembali</a>
+    {% else %}
+      <form action="/hitung" method="post">
+        <label for="tugas">Nilai Tugas:</label>
+        <input type="number" name="tugas" step="0.1" required>
+
+        <label for="uts">Nilai UTS:</label>
+        <input type="number" name="uts" step="0.1" required>
+
+        <label for="uas">Nilai UAS:</label>
+        <input type="number" name="uas" step="0.1" required>
+
+        <button type="submit">Hitung Nilai</button>
+      </form>
+    {% endif %}
+  </div>
+</body>
+</html>
